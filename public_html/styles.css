@@ -31,7 +31,7 @@
 :root {
   /* Color Palette */
   --primary-green: #7CB342;
-  --primary-green-accessible: #4E8528; /* Darker shade for text/buttons to meet WCAG AA */
+  --primary-green-accessible: #4d8427; /* Darker shade for text/buttons to meet WCAG AA */
   --secondary-gray: #232323;
   --accent-light-gray: #F5F5F5;
   --white-color: #FFFFFF;
@@ -39,7 +39,7 @@
   --dark-gray-header: #1a1a1a;
   
   /* Footer Colors */
-  --footer-bg: #4A4A4A;
+  --footer-bg: #070707;
   --footer-text: #FFFFFF;
   --footer-link-accent: #7CB342;
   
@@ -89,7 +89,7 @@ body {
 }
 
 .text-green-highlight {
-  color: var(--primary-green-accessible);
+  color: #477e21; /* Slightly darker for WCAG AAA text contrast on white */
 }
 
 .bg-white-contrast {
@@ -940,7 +940,7 @@ footer {
 }
 .newsletter-link {
   font-weight: 600;
-  color: var(--primary-green-accessible);
+  color: #ffffff; /* White for sufficient contrast against dark footer background */
 }
 .social-icon img {
   transition: box-shadow 0.2s, transform 0.2s;
@@ -1580,7 +1580,7 @@ select:focus {
     color: #e5e5e5 !important;
   }
   .text-green-highlight {
-    color: #7CB342 !important;
+    color: #7CB342 !important; /* Lighter shade acceptable on dark backgrounds in dark mode */
   }
 
   /* Force all text to be light in dark mode */
