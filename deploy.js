@@ -9,12 +9,12 @@ const config = {
   user: process.env.SITEGROUND_USER,
   password: process.env.SITEGROUND_PASSWORD,
   host: process.env.SITEGROUND_HOST,
-  port: parseInt(process.env.SITEGROUND_PORT) || 21,
+  port: parseInt(process.env.SITEGROUND_PORT) || 22,
   localRoot: __dirname + "/dist",
   remoteRoot: "/" + (process.env.SITEGROUND_REMOTE_PATH || "public_html"),
   include: ["*", "**/*"],
   deleteRemote: false,
-  forcePasv: true,
+  sftp: true,
 };
 
 ftpDeploy
