@@ -10,6 +10,7 @@ const host = process.env.SITEGROUND_HOST;
 const user = process.env.SITEGROUND_USER;
 const remotePath = process.env.SITEGROUND_REMOTE_PATH || "public_html";
 const sshKey = process.env.SITEGROUND_SSH_KEY;
+const sshPort = process.env.SITEGROUND_PORT || "18765";
 const localDist = __dirname + "/dist/";
 
 if (!host || !user || !sshKey) {
@@ -25,7 +26,7 @@ try {
   console.log(`Deploying to ${user}@${host}:${remotePath} ...`);
   execSync(
     `rsync -avz --delete \
-      -e "ssh -i ${keyPath} -o StrictHostKeyChecking=no -p 22" \
+      -e "ssh -i ${keyPath} -o StrictHostKeyChecking=no -p ${sshPort}" \
       ${localDist} \
       ${user}@${host}:${remotePath}`,
     { stdio: "inherit" }
