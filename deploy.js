@@ -1,4 +1,4 @@
-const FtpDeploy = require("ftp-deploy");
+import FtpDeploy from "ftp-deploy";
 
 const ftpDeploy = new FtpDeploy();
 
