@@ -7,15 +7,15 @@ const urlsToCache = [
   '/cookies-policy.html',
   '/styles.css',
   '/script.js',
-  '/img/re-evented logo.webp',
+  '/img/re-evented-logo.webp',
   '/img/Re-Evented members_2025.webp',
-  '/img/Peter Latten.webp',
-  '/img/Dimitri Bauwens.webp',
-  '/img/Frederik Vannieuwenhuyse.webp',
+  '/img/Peter-Latten.webp',
+  '/img/Dimitri-Bauwens.webp',
+  '/img/Frederik-Vannieuwenhuyse.webp',
   '/img/linkedin-icon.svg',
-  '/img/XP-Days-Benelux logo.webp',
+  '/img/XP-Days-Benelux-logo.webp',
   '/img/Regional-Scrum-Gathering-2024-Ghent.webp',
-  '/img/Liberating-Structures-gathering-2025 logo.webp'
+  '/img/Liberating-Structures-gathering-2025-logo.webp'
 ];
 
 // Install event - cache resources
