@@ -1,3 +1,5 @@
 /.idea/
 /webstats/
 /logs/
+/node_modules/
+/dist/

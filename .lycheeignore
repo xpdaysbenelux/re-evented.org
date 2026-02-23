@@ -1,0 +1,6 @@
+# False positive - lychee can't authenticate against fonts.gstatic.com
+https://fonts.gstatic.com/
+
+# Dead external domains (not under our control)
+https://aibrusselssummit.com/
+https://agilecoachingretreat-belgium.org/
