@@ -1,20 +1,27 @@
 import js from "@eslint/js";
+import globals from "globals";
 
 export default [
   js.configs.recommended,
   {
+    files: ["public_html/**/*.js"],
+    ignores: ["public_html/sw.js"],
     languageOptions: {
       ecmaVersion: "latest",
       globals: {
-        window: "readonly",
-        document: "readonly",
-        console: "readonly",
-        navigator: "readonly",
-        fetch: "readonly",
-        setTimeout: "readonly",
-        clearTimeout: "readonly",
-        setInterval: "readonly",
-        clearInterval: "readonly",
+        ...globals.browser,
+      },
+    },
+    rules: {
+      "no-unused-vars": "warn",
+    },
+  },
+  {
+    files: ["public_html/sw.js"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      globals: {
+        ...globals.serviceworker,
       },
     },
     rules: {
