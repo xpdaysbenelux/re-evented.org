@@ -5,6 +5,7 @@
     "require-sri": "off",
     "long-title": "off",
     "no-trailing-whitespace": "off",
-    "prefer-native-element": "off"
+    "prefer-native-element": "off",
+    "void-style": "off"
   }
 }
