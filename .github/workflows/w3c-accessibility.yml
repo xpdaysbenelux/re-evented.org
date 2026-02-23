@@ -37,7 +37,7 @@ jobs:
       - name: Link Checker
         uses: lycheeverse/lychee-action@v1.9.0
         with:
-          args: --verbose --no-progress "dist/**/*.html"
+          args: --verbose --no-progress --exclude-file .lycheeignore "dist/**/*.html"
         continue-on-error: true
 
       - name: Install Pa11y
