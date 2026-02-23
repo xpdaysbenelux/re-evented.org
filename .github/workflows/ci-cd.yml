@@ -58,8 +58,6 @@ jobs:
         env:
           SITEGROUND_HOST: ${{ secrets.SITEGROUND_HOST }}
           SITEGROUND_USER: ${{ secrets.SITEGROUND_USER }}
-          SITEGROUND_PASSWORD: ${{ secrets.SITEGROUND_PASSWORD }}
+          SITEGROUND_SSH_KEY: ${{ secrets.SITEGROUND_SSH_KEY }}
           SITEGROUND_REMOTE_PATH: re-evented.org/public_html
-          SITEGROUND_PORT: 22
-          SITEGROUND_PROTOCOL: sftp
         run: npm run deploy:siteground
