@@ -54,14 +54,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install sshpass
-        run: sudo apt-get install -y sshpass
-
       - name: Deploy to SiteGround
         env:
-          SITEGROUND_HOST: ${{ secrets.SITEGROUND_HOST }}
-          SITEGROUND_USER: ${{ secrets.SITEGROUND_USER }}
-          SITEGROUND_PASSWORD: ${{ secrets.SITEGROUND_PASSWORD }}
+          SITEGROUND_HOST: ssh.re-evented.org
+          SITEGROUND_USER: u1589-twuamlkm7vvc
+          SITEGROUND_SSH_KEY: ${{ secrets.SITEGROUND_SSH_KEY }}
           SITEGROUND_REMOTE_PATH: re-evented.org/public_html
           SITEGROUND_PORT: 18765
         run: npm run deploy:siteground
