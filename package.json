@@ -1,0 +1,22 @@
+{
+  "name": "re-evented-org",
+  "version": "1.0.0",
+  "description": "Re-evented website",
+  "private": true,
+  "scripts": {
+    "lint": "eslint public_html/**/*.js && stylelint public_html/**/*.css && htmlhint public_html/**/*.html",
+    "test:run": "html-validate public_html/**/*.html",
+    "build": "rm -rf dist && cp -r public_html dist",
+    "deploy:siteground": "node deploy.js"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "htmlhint": "^1.1.4",
+    "html-validate": "^9.5.0",
+    "stylelint": "^16.6.1",
+    "stylelint-config-standard": "^36.0.1"
+  },
+  "dependencies": {
+    "ftp-deploy": "^2.4.7"
+  }
+}
