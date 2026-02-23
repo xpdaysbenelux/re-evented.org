@@ -59,7 +59,7 @@ jobs:
           SITEGROUND_HOST: ${{ secrets.SITEGROUND_HOST }}
           SITEGROUND_USER: ${{ secrets.SITEGROUND_USER }}
           SITEGROUND_PASSWORD: ${{ secrets.SITEGROUND_PASSWORD }}
-          SITEGROUND_REMOTE_PATH: rsgbrussels26.com/public_html
+          SITEGROUND_REMOTE_PATH: re-evented.org/public_html
           SITEGROUND_PORT: 21
           SITEGROUND_PROTOCOL: ftp
         run: npm run deploy:siteground
