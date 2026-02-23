@@ -1,0 +1,25 @@
+User-agent: *
+Allow: /
+
+# Disallow README.md from indexing
+Disallow: /README.md
+
+# Disallow subscribers file from indexing
+Disallow: /subscribers.txt
+
+# Sitemap location
+Sitemap: https://re-evented.org/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1
+
+# Disallow specific paths (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow all images
+Allow: /img/
+
+# Allow all CSS and JS files
+Allow: /*.css
+Allow: /*.js 
