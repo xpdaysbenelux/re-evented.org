@@ -62,6 +62,6 @@ jobs:
           SITEGROUND_HOST: ssh.re-evented.org
           SITEGROUND_USER: u1589-twuamlkm7vvc
           SITEGROUND_SSH_KEY: ${{ secrets.SITEGROUND_SSH_KEY }}
-          SITEGROUND_REMOTE_PATH: public_html
+          SITEGROUND_REMOTE_PATH: www/re-evented.org/public_html
           SITEGROUND_PORT: 18765
         run: npm run deploy:siteground
