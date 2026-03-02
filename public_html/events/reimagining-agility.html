@@ -442,7 +442,21 @@
                             </div>
 
                             <div class="bg-white-contrast rounded-xl card-standard p-8 sm:p-10 max-w-2xl mx-auto">
+
+                                <!-- Success message (hidden until submit) -->
+                                <div id="form-success" class="hidden text-center py-8" role="alert" aria-live="polite">
+                                    <div class="text-5xl mb-4">✅</div>
+                                    <h3 class="text-h3 text-primary mb-3">You're on the list!</h3>
+                                    <p class="text-body text-secondary">Thanks for registering your interest. We'll be in touch with details and early bird pricing as soon as they're available.</p>
+                                </div>
+
+                                <!-- Error message (hidden until error) -->
+                                <div id="form-error" class="hidden mb-6 p-4 rounded-lg bg-red-50 border border-red-200 text-red-700 text-small" role="alert" aria-live="polite">
+                                    Something went wrong — please try again or email us directly.
+                                </div>
+
                                 <form
+                                    id="interest-form"
                                     class="formspree-form space-y-6"
                                     action="https://formspree.io/f/meelbqyo"
                                     method="POST"
@@ -496,13 +510,13 @@
                                         <textarea id="message" name="message" rows="4" placeholder="Questions, thoughts, or context that would help us…"></textarea>
                                     </div>
 
-                                    <div class="flex items-start gap-3">
+                                    <label class="flex items-center gap-3 cursor-pointer p-3 rounded-lg border border-gray-200 hover:border-[var(--primary-green-accessible)] hover:bg-green-50 transition-colors duration-200">
                                         <input type="checkbox" id="newsletter-consent" name="newsletter_consent" value="yes"
-                                            class="mt-1 w-4 h-4 flex-shrink-0">
-                                        <label for="newsletter-consent" class="font-normal text-small text-secondary cursor-pointer">
+                                            class="w-5 h-5 flex-shrink-0 accent-[var(--primary-green-accessible)] cursor-pointer">
+                                        <span class="font-normal text-small text-secondary">
                                             Keep me updated about this workshop and similar Re-Evented events
-                                        </label>
-                                    </div>
+                                        </span>
+                                    </label>
 
                                     <!-- Honeypot anti-spam field -->
                                     <input type="text" name="_gotcha" class="hidden-field" tabindex="-1" aria-hidden="true">
@@ -611,6 +625,39 @@
 
     <script>
         document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+        // Formspree in-page submission
+        var form = document.getElementById('interest-form');
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var submitBtn = form.querySelector('[type="submit"]');
+                var errorEl = document.getElementById('form-error');
+                var successEl = document.getElementById('form-success');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending…';
+                errorEl.classList.add('hidden');
+                fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                }).then(function (res) {
+                    if (res.ok) {
+                        form.classList.add('hidden');
+                        successEl.classList.remove('hidden');
+                        successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    } else {
+                        errorEl.classList.remove('hidden');
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Register My Interest';
+                    }
+                }).catch(function () {
+                    errorEl.classList.remove('hidden');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Register My Interest';
+                });
+            });
+        }
 
         var btn = document.getElementById('mobile-menu-button');
         var menu = document.getElementById('mobile-menu');
