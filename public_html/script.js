@@ -78,9 +78,9 @@ function ensureYearUpdated() {
 
 const sensitiveData = {
   // Personal Names
-  "peter": "UGV0ZXIgTGF0dGVu",
-  "frederik": "RnJlZGVyaWsgVmFubmlldXdlbmh1eXNl",
-  "dimitri": "RGltaXRyaSBCYXV3ZW5z",
+  "peter": "UGV0ZXI=",
+  "frederik": "RnJlZGVyaWs=",
+  "dimitri": "RGltaXRyaQ==",
   "frank": "RnJhbms=",
   "guillaume": "R3VpbGxhdW1l",
   "dana": "RGFuYQ==",
