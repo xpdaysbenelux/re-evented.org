@@ -81,6 +81,9 @@ const sensitiveData = {
   "peter": "UGV0ZXIgTGF0dGVu",
   "frederik": "RnJlZGVyaWsgVmFubmlldXdlbmh1eXNl",
   "dimitri": "RGltaXRyaSBCYXV3ZW5z",
+  "frank": "RnJhbms=",
+  "guillaume": "R3VpbGxhdW1l",
+  "dana": "RGFuYQ==",
   
   // Emails
   "email_info": "aW5mb0ByZS1ldmVudGVkLm9yZw==",
