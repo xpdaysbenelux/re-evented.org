@@ -12,12 +12,15 @@
   },
   "devDependencies": {
     "eslint": "^9.0.0",
-    "htmlhint": "^1.1.4",
     "html-validate": "^10.0.0",
+    "htmlhint": "^1.1.4",
     "stylelint": "^16.6.1",
     "stylelint-config-standard": "^36.0.1"
   },
   "dependencies": {
     "ftp-deploy": "^2.4.7"
+  },
+  "overrides": {
+    "minimatch": "^9.0.7"
   }
 }
