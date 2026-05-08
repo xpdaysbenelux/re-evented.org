@@ -593,11 +593,22 @@ function initializeCookieConsent() {
 }
 
 /**
+ * Prevent right-click saving and drag-and-drop of images
+ */
+function protectImages() {
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('contextmenu', e => e.preventDefault());
+    img.addEventListener('dragstart', e => e.preventDefault());
+  });
+}
+
+/**
  * Initialize data protection features
  */
 function initializeDataProtection() {
   protectEmails();
   protectSensitiveData();
+  protectImages();
 }
 
 /* ===================== ENHANCED MOBILE MENU FUNCTIONALITY ===================== */
