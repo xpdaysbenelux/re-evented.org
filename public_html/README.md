@@ -69,7 +69,6 @@ public_html/
 | Event | Page |
 |---|---|
 | Liberating Structures Global Gathering | https://liberatingstructuresgathering.com/ |
-| Agile Lean Europe | https://agilelean.eu/ |
 | Regional Scrum Gathering Brussels | https://www.rsgbrussels26.com/ |
 | XP Days Benelux | https://xpdaysbenelux.org/ |
 | Reimagining Agility – Brussels Workshop | `/events/reimagining-agility.html` |
