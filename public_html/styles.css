@@ -1847,7 +1847,7 @@ select:focus {
     padding: 0.35rem 0;
   }
 
-  footer nav[aria-label="Footer Navigation"] {
+  .footer nav[aria-label="Footer Navigation"] {
     gap: 0;
   }
 
