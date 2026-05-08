@@ -1843,17 +1843,17 @@ select:focus {
   }
 
   .footer-link {
-    font-size: 1.1rem;
-    padding: 0.5rem 0;
+    font-size: 1rem;
+    padding: 0.35rem 0;
   }
 
   footer nav[aria-label="Footer Navigation"] {
-    gap: 1.5rem;
+    gap: 0;
   }
 
   .footer .flex,
   .footer .flex-col {
-    gap: 2rem;
+    gap: 1rem;
   }
 }
 
