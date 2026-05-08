@@ -98,7 +98,7 @@ const sensitiveData = {
   "vzw_bic": "S1JFREJFQkI=",
   
   // Re-Evented Stichting (Netherlands)
-  "stichting_name": "UmUtRXZlbnRlZCBTdGljaHRpbmc=",
+  "stichting_name": "U3RpY2h0aW5nIFJlLUV2ZW50ZWQ=",
   "stichting_address": "TXVzc2NoZW5icm9la3N0cmFhdCA1MCwgNTYyMSBFRCBFaW5kaG92ZW4sIFRoZSBOZXRoZXJsYW5kcw==",
   "stichting_kvk": "Njc2NjY4OTI=",
   "stichting_vat": "TkwgODU3MTE5ODk4QjAx",
