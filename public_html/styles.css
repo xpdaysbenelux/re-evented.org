@@ -1633,6 +1633,13 @@ select:focus {
     border-radius: 8px;
     padding: 8px;
   }
+
+  /* Give event partner logos a white background in dark mode */
+  .event-logo-dark-bg {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 8px;
+  }
 }
 
 /* === Improved spacing for FLAGSHIP EVENTS section === */
