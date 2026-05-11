@@ -1626,9 +1626,12 @@ select:focus {
     color: var(--secondary-gray) !important;
   }
 
-  /* Make the Re-Evented logo white in dark mode */
+  /* Give the Re-Evented logo a white background in dark mode */
   .logo-image {
-    filter: brightness(0) invert(1) !important;
+    filter: none !important;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 8px;
   }
 }
 
