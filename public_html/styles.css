@@ -70,7 +70,7 @@ html {
 }
 
 body {
-  font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+  font-family: Newsreader, Georgia, 'Times New Roman', serif;
   color: var(--secondary-gray);
   background-color: var(--white-color);
   min-height: 100vh;
@@ -450,7 +450,7 @@ body::before {
 }
 
 .testimonial-author {
-  font-family: 'Bodoni Moda', 'Didot', 'Bodoni MT', serif;
+  font-family: 'Bodoni Moda', Didot, 'Bodoni MT', serif;
   font-weight: 600;
   color: var(--accent-warm);
   margin-bottom: 0.25rem;
@@ -726,7 +726,7 @@ body::before {
   transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   box-shadow: var(--standard-shadow);
   border-radius: var(--radius-sm);
-  font-family: 'Bodoni Moda', 'Didot', 'Bodoni MT', serif;
+  font-family: 'Bodoni Moda', Didot, 'Bodoni MT', serif;
   font-weight: 600;
   letter-spacing: 0.02em;
 }
@@ -744,7 +744,7 @@ body::before {
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   box-shadow: var(--standard-shadow);
   border-radius: var(--radius-sm);
-  font-family: 'Bodoni Moda', 'Didot', 'Bodoni MT', serif;
+  font-family: 'Bodoni Moda', Didot, 'Bodoni MT', serif;
   font-weight: 600;
   letter-spacing: 0.02em;
 }
@@ -903,7 +903,7 @@ body::before {
 
 /* ===================== TYPOGRAPHY ===================== */
 h1, .text-h1 {
-  font-family: 'Bodoni Moda', 'Didot', 'Bodoni MT', serif;
+  font-family: 'Bodoni Moda', Didot, 'Bodoni MT', serif;
   font-size: 2.75rem;
   font-weight: 700;
   line-height: 1.05;
@@ -913,7 +913,7 @@ h1, .text-h1 {
 }
 
 h2, .text-h2 {
-  font-family: 'Bodoni Moda', 'Didot', 'Bodoni MT', serif;
+  font-family: 'Bodoni Moda', Didot, 'Bodoni MT', serif;
   font-size: 2.25rem;
   font-weight: 700;
   line-height: 1.1;
@@ -923,7 +923,7 @@ h2, .text-h2 {
 }
 
 h3, .text-h3 {
-  font-family: 'Bodoni Moda', 'Didot', 'Bodoni MT', serif;
+  font-family: 'Bodoni Moda', Didot, 'Bodoni MT', serif;
   font-size: 1.75rem;
   font-weight: 600;
   line-height: 1.15;
@@ -932,7 +932,7 @@ h3, .text-h3 {
 }
 
 h4, .text-h4 {
-  font-family: 'Bodoni Moda', 'Didot', 'Bodoni MT', serif;
+  font-family: 'Bodoni Moda', Didot, 'Bodoni MT', serif;
   font-size: 1.375rem;
   font-weight: 600;
   line-height: 1.2;
@@ -960,7 +960,7 @@ p, .text-body {
 }
 
 .text-caption {
-  font-family: 'Bodoni Moda', 'Didot', 'Bodoni MT', serif;
+  font-family: 'Bodoni Moda', Didot, 'Bodoni MT', serif;
   font-size: 0.8125rem;
   font-weight: 500;
   line-height: 1.4;
