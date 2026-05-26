@@ -192,6 +192,21 @@ function protectSensitiveData() {
 
   // Add CSS to make protected data harder to select/copy
   addProtectionStyles();
+
+  // Block copy/paste on protected elements
+  document.addEventListener('copy', function(e) {
+    const selection = window.getSelection();
+    if (!selection || !selection.rangeCount) return;
+
+    for (let i = 0; i < selection.rangeCount; i++) {
+      const node = selection.getRangeAt(i).commonAncestorContainer;
+      const el = node.nodeType === Node.TEXT_NODE ? node.parentElement : node;
+      if (el && (el.closest('.no-copy') || el.closest('.protected-data'))) {
+        e.preventDefault();
+        return;
+      }
+    }
+  });
 }
 
 /**
