@@ -7,19 +7,37 @@ Disallow: /README.md
 # Disallow subscribers file from indexing
 Disallow: /subscribers.txt
 
+# AI Search Engine Bots - explicitly allowed for GEO visibility
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
 # Sitemap location
 Sitemap: https://re-evented.org/sitemap.xml
 
-# Crawl delay (optional)
+# Crawl delay for general bots
 Crawl-delay: 1
-
-# Disallow specific paths (if any)
-# Disallow: /admin/
-# Disallow: /private/
 
 # Allow all images
 Allow: /img/
 
 # Allow all CSS and JS files
 Allow: /*.css
-Allow: /*.js 
+Allow: /*.js
