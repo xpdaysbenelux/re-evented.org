@@ -948,17 +948,15 @@ function initializeEnhancedFeatures() {
       });
     }
     
-    // Service Worker registration for offline support
+    // Service Worker removed - it was serving stale HTML (stale-while-revalidate).
+    // Actively unregister any SW still installed on returning visitors and purge its caches.
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-          .then(registration => {
-            console.log('SW registered: ', registration);
-          })
-          .catch(registrationError => {
-            console.log('SW registration failed: ', registrationError);
-          });
-      });
+      navigator.serviceWorker.getRegistrations()
+        .then(regs => regs.forEach(reg => reg.unregister()))
+        .catch(() => {});
+      if (window.caches) {
+        caches.keys().then(keys => keys.forEach(k => caches.delete(k))).catch(() => {});
+      }
     }
     
   } catch (error) {
