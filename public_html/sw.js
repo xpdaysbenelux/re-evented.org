@@ -1,4 +1,4 @@
-const CACHE_NAME = 're-evented-v1.0.0';
+const CACHE_NAME = 're-evented-v2.0.0';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -18,44 +18,45 @@ const urlsToCache = [
   '/img/Liberating-Structures-gathering-2025-logo.webp'
 ];
 
-// Install event - cache resources
+// Install event - cache resources and activate immediately
 self.addEventListener('install', event => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log('Opened cache');
-        return cache.addAll(urlsToCache);
-      })
+      .then(cache => cache.addAll(urlsToCache))
   );
 });
 
-// Fetch event - serve from cache when offline
+// Fetch event - stale-while-revalidate strategy
+// Serve cached version immediately, then update cache from network in background
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // Return cached version or fetch from network
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
-      }
-    )
+    caches.open(CACHE_NAME).then(cache => {
+      return cache.match(event.request).then(cachedResponse => {
+        const fetchPromise = fetch(event.request).then(networkResponse => {
+          if (networkResponse && networkResponse.status === 200 && networkResponse.type === 'basic') {
+            cache.put(event.request, networkResponse.clone());
+          }
+          return networkResponse;
+        }).catch(() => cachedResponse);
+
+        return cachedResponse || fetchPromise;
+      });
+    })
   );
 });
 
-// Activate event - clean up old caches
+// Activate event - clean up old caches and claim all clients immediately
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
         cacheNames.map(cacheName => {
           if (cacheName !== CACHE_NAME) {
-            console.log('Deleting old cache:', cacheName);
             return caches.delete(cacheName);
           }
         })
       );
-    })
+    }).then(() => self.clients.claim())
   );
 }); 
