@@ -77,14 +77,6 @@ function ensureYearUpdated() {
 /* ===================== DATA PROTECTION FUNCTIONS ===================== */
 
 const sensitiveData = {
-  // Personal Names
-  "peter": "UGV0ZXI=",
-  "frederik": "RnJlZGVyaWs=",
-  "dimitri": "RGltaXRyaQ==",
-  "frank": "RnJhbms=",
-  "guillaume": "R3VpbGxhdW1l",
-  "dana": "RGFuYQ==",
-  
   // Emails
   "email_info": "aW5mb0ByZS1ldmVudGVkLm9yZw==",
   
