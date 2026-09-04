@@ -6,7 +6,7 @@ Website for [Re-Evented](https://re-evented.org), a non-profit dedicated to crea
 
 - Plain HTML / CSS / vanilla JS
 - [Tailwind CSS](https://tailwindcss.com/) via CDN
-- Hosted on SiteGround, deployed via GitHub Actions + rsync over SSH
+- Hosted on Cloudflare Pages, deployed via GitHub Actions + `wrangler pages deploy`
 
 ## Repository
 
@@ -25,25 +25,30 @@ python3 -m http.server 8000
 
 Then open http://localhost:8000 in your browser.
 
-Run checks before committing:
+Install once, then enable the git hooks so the CI gate runs locally too:
 
 ```bash
 npm install
-npm run lint       # eslint + stylelint + htmlhint
-npm run test:run   # html-validate
+npm run hooks:install   # sets core.hooksPath to .githooks/
 ```
+
+`pre-commit` runs a secret scan (`gitleaks`, skipped with a warning if not installed) plus `npm run verify`. `pre-push` runs `npm run verify` again. To run the same checks manually:
+
+```bash
+npm run verify   # lint (eslint + stylelint + htmlhint) + test:run (html-validate) + build
+```
+
+**Known local/CI gap:** the `w3c-accessibility.yml` workflow (HTML5 validation, link checking via lychee, Pa11y accessibility scan) only runs in CI and is advisory (`continue-on-error: true` on every step) — it never blocks a merge or deploy. There's no local equivalent; if you want to check these before pushing, install `html5validator`, `lychee`, and `pa11y-ci` yourself and point them at a built `dist/`.
 
 ## Deployment
 
 Pushes to `main` trigger the CI/CD pipeline automatically:
 
-1. **Build & Test** — lint + html-validate + `npm run build` (copies `public_html/` → `dist/`)
-2. **Deploy** — rsync `dist/` to SiteGround via SSH
+1. **Build & Test** — secret scan (gitleaks) + lint + html-validate + `npm run build` (copies `public_html/` → `dist/`)
+2. **Deploy** — `wrangler pages deploy dist` to Cloudflare Pages, followed by a live-verify check against `https://re-evented.org/`
 
-**Remote path:** `~/www/re-evented.org/public_html/`
-**SSH host:** `ssh.re-evented.org` port `18765`
-**SSH user:** set via `SITEGROUND_USER` in `ci-cd.yml`
-**SSH key:** stored as `SITEGROUND_SSH_KEY` GitHub Actions secret
+**Cloudflare Pages project:** `re-evented-org`
+**Secrets:** `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` (GitHub Actions secrets)
 
 ## File Structure
 

@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+
+if command -v gitleaks >/dev/null 2>&1; then
+  gitleaks protect --staged -v .
+else
+  echo "warning: gitleaks not installed, skipping secret scan" >&2
+fi
+
+npm run verify
