@@ -1033,24 +1033,22 @@ function initializeNewsletterSubscription() {
     submitButton.textContent = 'Subscribing...';
     
     try {
-      const response = await fetch('https://formspree.io/f/__FORMSPREE_FORM_ID__', {
+      const response = await fetch('subscribe.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json',
         },
         body: JSON.stringify({ email: email })
       });
-
+      
       const data = await response.json();
-
-      if (response.ok) {
-        showMessage('You have successfully subscribed to our newsletter!', true);
+      
+      if (data.success) {
+        showMessage(data.message, true);
         emailInput.value = '';
         form.reset();
       } else {
-        const message = data.errors?.map(e => e.message).join(', ') || 'Please enter a valid email address.';
-        showMessage(message, false);
+        showMessage(data.message, false);
       }
     } catch (error) {
       console.error('Newsletter subscription error:', error);
