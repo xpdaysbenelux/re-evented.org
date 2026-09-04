@@ -1,0 +1,8 @@
+# Newsletter Subscribers List
+# This file is automatically managed by subscribe.php
+# Do not edit manually
+frederik.vannieuwenhuyse@gmail.com
+krobaux@outlook.com
+john.van.beers@gmail.com
+anita.kalmane@gmail.com
+conference@arcrit.com

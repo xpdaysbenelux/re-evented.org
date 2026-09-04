@@ -4,6 +4,9 @@ Allow: /
 # Disallow README.md from indexing
 Disallow: /README.md
 
+# Disallow subscribers file from indexing
+Disallow: /subscribers.txt
+
 # AI Search Engine Bots - explicitly allowed for GEO visibility
 User-agent: GPTBot
 Allow: /

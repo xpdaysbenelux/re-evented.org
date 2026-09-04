@@ -43,7 +43,7 @@ jobs:
         run: npm run build
 
   deploy:
-    name: Deploy to Cloudflare Pages
+    name: Deploy to SiteGround
     needs: build-and-test
     if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
@@ -65,31 +65,11 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Deploy to Cloudflare Pages
+      - name: Deploy to SiteGround
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: npx wrangler pages deploy dist --project-name=re-evented-org --branch=main
-
-      - name: Live-verify
-        run: |
-          for i in $(seq 1 12); do
-            STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 https://re-evented.org/)
-            [ "$STATUS" = "200" ] && break
-            echo "attempt $i: homepage returned $STATUS, retrying..."
-            sleep 10
-          done
-          [ "$STATUS" = "200" ] || { echo "FAIL: homepage did not return 200"; exit 1; }
-
-          HTTP_REDIRECT=$(curl -s -o /dev/null -w "%{http_code}" http://re-evented.org/)
-          case "$HTTP_REDIRECT" in
-            301|308) ;;
-            *) echo "FAIL: http:// did not redirect (got $HTTP_REDIRECT)"; exit 1 ;;
-          esac
-
-          for path in /subscribe.php /subscribers.txt; do
-            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "https://re-evented.org$path")
-            [ "$STATUS" = "404" ] || { echo "FAIL: $path returned $STATUS, expected 404 (leftover PHP-backend)"; exit 1; }
-          done
-
-          echo "live-verify passed"
+          SITEGROUND_HOST: ssh.re-evented.org
+          SITEGROUND_USER: u1589-twuamlkm7vvc
+          SITEGROUND_SSH_KEY: ${{ secrets.SITEGROUND_SSH_KEY }}
+          SITEGROUND_REMOTE_PATH: www/re-evented.org/public_html
+          SITEGROUND_PORT: 18765
+        run: npm run deploy:siteground
