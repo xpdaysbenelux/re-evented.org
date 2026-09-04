@@ -7,7 +7,9 @@
   "scripts": {
     "lint": "eslint public_html/**/*.js && stylelint public_html/**/*.css && htmlhint public_html/**/*.html",
     "test:run": "html-validate public_html/**/*.html",
-    "build": "rm -rf dist && cp -r public_html dist && rm -f dist/README.md"
+    "build": "rm -rf dist && cp -r public_html dist && rm -f dist/README.md",
+    "verify": "npm run lint && npm run test:run && npm run build",
+    "hooks:install": "git config core.hooksPath .githooks"
   },
   "devDependencies": {
     "eslint": "^9.0.0",
