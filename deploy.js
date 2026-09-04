@@ -20,12 +20,13 @@ if (!host || !user || !sshKey) {
 
 const keyPath = `${os.tmpdir()}/deploy_key`;
 fs.writeFileSync(keyPath, sshKey + "\n", { mode: 0o600 });
+const knownHostsPath = `${__dirname}/deploy-known-hosts`;
 
 try {
   console.log(`Deploying to ${user}@${host}:${remotePath} (port ${port}) ...`);
   execSync(
     `rsync -avz --delete \
-      -e "ssh -i ${keyPath} -o StrictHostKeyChecking=no -p ${port}" \
+      -e "ssh -i ${keyPath} -o StrictHostKeyChecking=yes -o UserKnownHostsFile=${knownHostsPath} -p ${port}" \
       ${localDist} \
       ${user}@${host}:${remotePath}`,
     { stdio: "inherit" }
