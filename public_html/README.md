@@ -62,9 +62,6 @@ public_html/
 ├── cookies-policy.html
 ├── events/
 │   ├── reimagining-agility.html      # Reimagining Agility Brussels workshop (Oct 7, 2026)
-│   ├── certified-org-topologies-consultant.html      # C-OTC Bootcamp – Design AI-Ready Organizations with Org Topologies, Brussels (6–7 Oct 2026)
-│   ├── ebac-workshop.html            # EBAC Workshop – Extraordinarily Badass Agile Coaching, Brussels (Oct 7, 2026)
-│   ├── outcome-based-product-roadmaps.html  # Outcome-Based Product Roadmaps with Roman Pichler, Brussels (Oct 7, 2026)
 │   ├── atbru.html                    # → agiletourbrussels.be
 │   ├── xpdays.html                   # → xpdaysbenelux.org
 │   ├── less.html                     # → less.works
@@ -83,6 +80,3 @@ public_html/
 | Regional Scrum Gathering Brussels | https://www.rsgbrussels26.com/ |
 | XP Days Benelux | https://xpdaysbenelux.org/ |
 | Reimagining Agility – Brussels Workshop | `/events/reimagining-agility.html` |
-| Org Topologies – Brussels Certification | `/events/certified-org-topologies-consultant.html` |
-| EBAC Workshop – Extraordinarily Badass Agile Coaching | `/events/ebac-workshop.html` |
-| Outcome-Based Product Roadmaps with Roman Pichler | `/events/outcome-based-product-roadmaps.html` |
