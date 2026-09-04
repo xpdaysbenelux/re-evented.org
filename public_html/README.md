@@ -6,7 +6,7 @@ Website for [Re-Evented](https://re-evented.org), a non-profit dedicated to crea
 
 - Plain HTML / CSS / vanilla JS
 - [Tailwind CSS](https://tailwindcss.com/) via CDN
-- Hosted on Cloudflare Pages, deployed via GitHub Actions + `wrangler pages deploy`
+- Hosted on SiteGround, deployed via GitHub Actions + rsync over SSH
 
 ## Repository
 
@@ -45,10 +45,12 @@ npm run verify   # lint (eslint + stylelint + htmlhint) + test:run (html-validat
 Pushes to `main` trigger the CI/CD pipeline automatically:
 
 1. **Build & Test** — secret scan (gitleaks) + lint + html-validate + `npm run build` (copies `public_html/` → `dist/`)
-2. **Deploy** — `wrangler pages deploy dist` to Cloudflare Pages, followed by a live-verify check against `https://re-evented.org/`
+2. **Deploy** — rsync `dist/` to SiteGround via SSH
 
-**Cloudflare Pages project:** `re-evented-org`
-**Secrets:** `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` (GitHub Actions secrets)
+**Remote path:** `~/www/re-evented.org/public_html/`
+**SSH host:** `ssh.re-evented.org` port `18765`
+**SSH user:** set via `SITEGROUND_USER` in `ci-cd.yml`
+**SSH key:** stored as `SITEGROUND_SSH_KEY` GitHub Actions secret
 
 ## File Structure
 
