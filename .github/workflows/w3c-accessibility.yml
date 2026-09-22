@@ -1,11 +1,20 @@
 name: W3C Compliance & Accessibility
 
 on:
-  push:
-    branches: [ main ]
+  workflow_run:
+    workflows: ["CI/CD Pipeline"]
+    types: [completed]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -14,10 +23,24 @@ jobs:
   validate:
     name: W3C & Accessibility Checks
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      github.event_name == 'pull_request' ||
+      github.event.workflow_run.conclusion == 'success'
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
+        if: github.event.workflow_run.id != ''
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -30,29 +53,42 @@ jobs:
 
       - name: Build project
         run: npm run build
+        if: github.event.workflow_run.id == ''
 
       - name: HTML5 Validation
+        id: html5
         uses: Cyb3r-Jak3/html5validator-action@v7.2.0
         with:
           root: dist/
         continue-on-error: true
 
       - name: Link Checker
+        id: lychee
         uses: lycheeverse/lychee-action@v1.9.0
         with:
           args: --verbose --no-progress --exclude-file .lycheeignore "dist/**/*.html"
         continue-on-error: true
 
-      - name: Install Pa11y
-        run: npm install -g pa11y-ci
-
       - name: Start Local Server
-        run: |
-          npm install -g serve
-          serve -s dist -p 3000 &
-          sleep 5
+        run: npx serve -s dist -p 3000 &
 
       - name: Run Accessibility Checks (Pa11y)
+        id: pa11y
         run: |
-          pa11y-ci --sitemap http://localhost:3000/sitemap.xml --sitemap-find https://re-evented.org --sitemap-replace http://localhost:3000
+          sleep 5
+          npx pa11y-ci --sitemap http://localhost:3000/sitemap.xml --sitemap-find https://re-evented.org --sitemap-replace http://localhost:3000
         continue-on-error: true
+
+      - name: Cleanup server
+        if: always()
+        run: pkill -f "serve -s dist" || true
+
+      - name: Validation Summary
+        if: always()
+        run: |
+          echo "### W3C & Accessibility Results" >> $GITHUB_STEP_SUMMARY
+          echo "| Check | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| HTML5 Validation | ${{ steps.html5.outcome == 'success' && '✅ Passed' || '⚠️ Issues found (advisory)' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Link Checker | ${{ steps.lychee.outcome == 'success' && '✅ Passed' || '⚠️ Issues found (advisory)' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Accessibility (Pa11y) | ${{ steps.pa11y.outcome == 'success' && '✅ Passed' || '⚠️ Issues found (advisory)' }} |" >> $GITHUB_STEP_SUMMARY
