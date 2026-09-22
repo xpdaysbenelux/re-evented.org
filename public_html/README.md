@@ -68,9 +68,7 @@ public_html/
 ├── terms-and-conditions.html
 ├── cookies-policy.html
 ├── events/
-│   ├── reimagining-agility.html      # Reimagining Agility Brussels workshop (Oct 7, 2026)
 │   ├── atbru.html                    # → agiletourbrussels.be
-│   ├── xpdays.html                   # → xpdaysbenelux.org
 │   ├── less.html                     # → less.works
 │   ├── ai.html                       # → aibrusselssummit.com
 │   └── chris.html
@@ -85,5 +83,3 @@ public_html/
 |---|---|
 | Liberating Structures Global Gathering | https://liberatingstructuresgathering.com/ |
 | Regional Scrum Gathering Brussels | https://www.rsgbrussels26.com/ |
-| XP Days Benelux | https://xpdaysbenelux.org/ |
-| Reimagining Agility – Brussels Workshop | `/events/reimagining-agility.html` |
