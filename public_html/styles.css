@@ -1823,7 +1823,7 @@ select:focus {
 
 /* === Event portfolio styles === */
 #event-portfolio .grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 3rem 3.5rem;
 }
 
@@ -1838,13 +1838,6 @@ select:focus {
     grid-template-columns: 1fr;
     gap: 2rem 0;
   }
-}
-
-#event-portfolio .event-portfolio-list,
-#event-portfolio ul.space-y-3 {
-  word-break: keep-all;
-  white-space: nowrap;
-  overflow-x: auto;
 }
 
 #event-portfolio .event-portfolio-list li,
@@ -2071,15 +2064,6 @@ select:focus {
     break-inside: avoid;
     box-shadow: none;
     border: 1px solid #ccc;
-  }
-}
-
-@media (width <= 640px) {
-  #event-portfolio .event-portfolio-list,
-  #event-portfolio ul.space-y-3 {
-    white-space: normal !important;
-    word-break: break-word !important;
-    overflow-x: visible !important;
   }
 }
 
