@@ -5,7 +5,7 @@ Static marketing site for Re-Evented (agile/lean events, Benelux). Plain HTML/CS
 ## Layout
 
 - `public_html/` — the site. `index.html` (homepage), `cookies-policy.html`, `privacy-policy.html`, `terms-and-conditions.html`, `events/`, `img/`, `docs/`.
-- `public_html/styles.css` — all custom CSS. Tailwind utility classes come from the Tailwind CDN in the HTML `<head>`.
+- `public_html/styles.css` — all custom CSS. Tailwind utilities are compiled at build time into `dist/tailwind.css` (config: `tailwind.config.js`, input: `src/tailwind.css`). Fonts are self-hosted (`fonts.css`, `fonts/`).
 - `public_html/script.js` — all site JS (menu, animations, newsletter form, cookie banner).
 - `public_html/subscribe.php` — newsletter signup endpoint (PHP on SiteGround/Apache).
 - `public_html/.htaccess` — Apache config (access rules, caching, compression). Must stay deployed.
@@ -16,7 +16,7 @@ Static marketing site for Re-Evented (agile/lean events, Benelux). Plain HTML/CS
 
 - `npm run verify` — lint (eslint, stylelint, htmlhint) + html-validate + build. Must pass before every commit.
 - `npm run build` — copies `public_html/` to `dist/`.
-- Local preview: `python3 -m http.server 8765 -d public_html`.
+- Local preview: `npm run build && python3 -m http.server 8765 -d dist` (tailwind.css only exists in dist).
 
 ## Rules
 
