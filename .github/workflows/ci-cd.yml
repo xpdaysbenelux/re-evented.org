@@ -52,6 +52,12 @@ jobs:
       - name: Test newsletter endpoint
         run: bash tests/subscribe.test.sh
 
+      - name: Test asset hashing
+        run: npm run test:hash
+
+      - name: Test Tailwind build
+        run: npm run test:tailwind
+
       - name: Build project
         run: npm run build
 
