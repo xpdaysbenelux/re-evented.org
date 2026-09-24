@@ -5,6 +5,7 @@
     "alpha-value-notation": null,
     "color-function-notation": null,
     "selector-class-pattern": null,
-    "no-duplicate-selectors": null
+    "no-duplicate-selectors": null,
+    "media-feature-range-notation": "prefix"
   }
 }

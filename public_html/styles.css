@@ -137,7 +137,7 @@ body::before {
   padding-bottom: 4rem;
 }
 
-@media (width >= 768px) {
+@media (min-width: 768px) {
   .section-padding {
     padding-top: 5rem;
     padding-bottom: 5rem;
@@ -515,7 +515,7 @@ body::before {
   }
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .animate-slide-in-left,
   .animate-slide-in-right {
     animation: slide-in-up 0.8s ease-out forwards;
@@ -940,7 +940,7 @@ p, .text-body {
 }
 
 /* ===================== RESPONSIVE TYPOGRAPHY ===================== */
-@media (width >= 640px) {
+@media (min-width: 640px) {
   h1, .text-h1 {
     font-size: 3.5rem;
   }
@@ -962,7 +962,7 @@ p, .text-body {
   }
 }
 
-@media (width >= 768px) {
+@media (min-width: 768px) {
   h1, .text-h1 {
     font-size: 4.5rem;
   }
@@ -976,7 +976,7 @@ p, .text-body {
   }
 }
 
-@media (width >= 1024px) {
+@media (min-width: 1024px) {
   h1, .text-h1 {
     font-size: 5.5rem;
   }
@@ -1061,7 +1061,7 @@ footer {
   color: var(--footer-text);
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .footer nav[aria-label="Footer Navigation"] {
     flex-direction: column;
     gap: 0;
@@ -1137,7 +1137,7 @@ footer {
 /* ===================== RESPONSIVE ADJUSTMENTS ===================== */
 
 /* Responsive adjustments for cookie banner */
-@media (width <= 640px) {
+@media (max-width: 640px) {
   #cookie-banner .container {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -1198,7 +1198,7 @@ nav[aria-label="Mobile Navigation"] a:focus {
 /* ===================== ACCESSIBILITY ENHANCEMENTS ===================== */
 
 /* Ensure minimum touch target size for mobile */
-@media (width <= 768px) {
+@media (max-width: 768px) {
   a, button, input, select, textarea {
     min-height: 44px;
     min-width: 44px;
@@ -1269,7 +1269,7 @@ nav[aria-label="Mobile Navigation"] a:focus {
 }
 
 /* Enhanced mobile navigation */
-@media (width <= 768px) {
+@media (max-width: 768px) {
   #mobile-menu {
     max-height: 0;
     overflow: hidden;
@@ -1728,7 +1728,7 @@ select:focus {
   margin-bottom: 2.5rem;
 }
 
-@media (width <= 640px) {
+@media (max-width: 640px) {
   #events .event-logos-row,
   #events .event-stock-images-row {
     margin-bottom: 1.5rem;
@@ -1792,14 +1792,14 @@ select:focus {
   display: block;
 }
 
-@media (width <= 900px) {
+@media (max-width: 900px) {
   #events .event-logos-row .event-card,
   #earlier-events .event-logos-row .event-card {
     max-width: 200px;
   }
 }
 
-@media (width <= 640px) {
+@media (max-width: 640px) {
   #events .event-logos-row .event-card,
   #earlier-events .event-logos-row .event-card {
     max-width: 100%;
@@ -1829,13 +1829,13 @@ select:focus {
   gap: 3rem 3.5rem;
 }
 
-@media (width <= 1024px) {
+@media (max-width: 1024px) {
   #event-portfolio .grid {
     gap: 2rem 1.5rem;
   }
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   #event-portfolio .grid {
     grid-template-columns: 1fr;
     gap: 2rem 0;
@@ -1848,7 +1848,7 @@ select:focus {
   padding-bottom: 0.4em;
 }
 
-@media (width <= 640px) {
+@media (max-width: 640px) {
   .section-padding {
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
@@ -1875,7 +1875,7 @@ select:focus {
   }
 }
 
-@media (width <= 640px) {
+@media (max-width: 640px) {
   .cta-button,
   .event-card-button {
     font-size: 1.15rem;
@@ -1914,7 +1914,7 @@ select:focus {
   transform: none;
 }
 
-@media (width <= 640px) {
+@media (max-width: 640px) {
   .footer,
   footer {
     font-size: 1.1rem;
@@ -1936,7 +1936,7 @@ select:focus {
   }
 }
 
-@media (width <= 640px) {
+@media (max-width: 640px) {
   .cta-section h2 {
     font-size: 1.4rem;
     padding: 0.5rem 0;
@@ -1959,7 +1959,7 @@ select:focus {
   }
 }
 
-@media (width <= 640px) {
+@media (max-width: 640px) {
   .card-standard,
   .testimonial-card,
   .event-card {
