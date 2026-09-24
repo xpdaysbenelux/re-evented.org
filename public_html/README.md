@@ -58,7 +58,6 @@ Pushes to `main` trigger the CI/CD pipeline automatically:
 public_html/
 ├── index.html                        # Homepage
 ├── styles.css                        # Main stylesheet
-├── styles.min.css                    # Minified CSS
 ├── script.js                         # JavaScript
 ├── sw.js                             # Service Worker
 ├── manifest.json                     # PWA manifest
@@ -68,10 +67,7 @@ public_html/
 ├── terms-and-conditions.html
 ├── cookies-policy.html
 ├── events/
-│   ├── atbru.html                    # → agiletourbrussels.be
-│   ├── less.html                     # → less.works
-│   ├── ai.html                       # → aibrusselssummit.com
-│   └── chris.html
+│   └── ai.html                       # → aisummitbrussels.com
 ├── docs/
 │   └── Re-Evented-sponsorbook-2026.pdf
 └── img/

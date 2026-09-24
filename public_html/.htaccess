@@ -53,3 +53,14 @@ AddDefaultCharset UTF-8
     ExpiresByType image/webp "access plus 1 year"
     ExpiresByType image/svg+xml "access plus 1 year"
 </IfModule> 
+# Redirects for removed event pages
+<IfModule mod_alias.c>
+    Redirect 301 /events/atbru.html https://agiletourbrussels.be/
+    Redirect 301 /events/less.html https://less.works/conferenza/conferences/2025-global-less-conference-amsterdam-13
+    Redirect 301 /events/xpdays.html https://xpdaysbenelux.org/
+    Redirect 301 /events/chris.html /#earlier-events
+    Redirect 301 /events/reimagining-agility.html /#events
+    Redirect 301 /events/certified-org-topologies-consultant.html /#events
+    Redirect 301 /events/ebac-workshop.html /#events
+    Redirect 301 /events/outcome-based-product-roadmaps.html /#events
+</IfModule>
