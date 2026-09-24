@@ -285,16 +285,13 @@ class CookieConsent {
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div class="flex-1">
             <p class="text-sm text-gray-700">
-              We use cookies to enhance your browsing experience and analyze our traffic. 
+              We only use one essential cookie, to remember this choice. No analytics or third-party cookies.
               <a href="cookies-policy.html" class="text-green-highlight hover:text-primary underline">Learn more</a>
             </p>
           </div>
           <div class="flex gap-3">
-            <button id="cookie-accept-all" class="cta-button px-4 py-2 text-sm font-medium button-angular">
-              Accept All
-            </button>
-            <button id="cookie-accept-essential" class="cta-button-secondary px-4 py-2 text-sm font-medium button-angular">
-              Essential Only
+            <button id="cookie-accept-essential" type="button" class="cta-button px-4 py-2 text-sm font-medium button-angular">
+              OK
             </button>
           </div>
         </div>
@@ -309,22 +306,9 @@ class CookieConsent {
     }, 100);
 
     // Add event listeners
-    document.getElementById('cookie-accept-all').addEventListener('click', () => {
-      this.acceptAll();
-    });
-
     document.getElementById('cookie-accept-essential').addEventListener('click', () => {
       this.acceptEssential();
     });
-  }
-
-  /**
-   * Accept all cookies
-   */
-  acceptAll() {
-    this.setCookie('all');
-    this.hideBanner();
-    this.loadAnalytics();
   }
 
   /**
@@ -356,13 +340,6 @@ class CookieConsent {
     setTimeout(() => {
       banner.remove();
     }, 300);
-  }
-
-  /**
-   * Load analytics scripts
-   */
-  loadAnalytics() {
-    // Analytics loading logic can be added here
   }
 
   /**
@@ -403,27 +380,11 @@ class CookieConsent {
               </div>
               <p class="text-sm text-gray-600">Required for the website to function properly. Cannot be disabled.</p>
             </div>
-            
-            <div class="border-b pb-4">
-              <div class="flex items-center justify-between mb-2">
-                <label class="font-medium text-primary">Analytics Cookies</label>
-                <input type="checkbox" id="analytics-toggle" class="rounded border-gray-300">
-              </div>
-              <p class="text-sm text-gray-600">Help us understand how visitors use our website.</p>
-            </div>
-            
-            <div class="border-b pb-4">
-              <div class="flex items-center justify-between mb-2">
-                <label class="font-medium text-primary">Functional Cookies</label>
-                <input type="checkbox" id="functional-toggle" class="rounded border-gray-300">
-              </div>
-              <p class="text-sm text-gray-600">Enable enhanced functionality and personalization.</p>
-            </div>
           </div>
           
           <div class="flex gap-3 mt-6">
             <button id="save-preferences" class="cta-button px-4 py-2 text-sm font-medium button-angular flex-1">
-              Save Preferences
+              Save
             </button>
             <button id="cancel-preferences" class="cta-button-secondary px-4 py-2 text-sm font-medium button-angular">
               Cancel
@@ -435,28 +396,8 @@ class CookieConsent {
 
     document.body.appendChild(modal);
 
-    // Set current preferences
-    this.setCurrentPreferences();
-
     // Add event listeners
     this.addPreferenceEventListeners(modal);
-  }
-
-  /**
-   * Set current preferences in the modal
-   */
-  setCurrentPreferences() {
-    const currentPreference = this.getPreference();
-    const analyticsToggle = document.getElementById('analytics-toggle');
-    const functionalToggle = document.getElementById('functional-toggle');
-    
-    if (currentPreference === 'all') {
-      analyticsToggle.checked = true;
-      functionalToggle.checked = true;
-    } else if (currentPreference === 'essential') {
-      analyticsToggle.checked = false;
-      functionalToggle.checked = false;
-    }
   }
 
   /**
@@ -487,16 +428,8 @@ class CookieConsent {
    * Save user preferences
    */
   savePreferences() {
-    const analytics = document.getElementById('analytics-toggle').checked;
-    const functional = document.getElementById('functional-toggle').checked;
-    
-    if (analytics || functional) {
-      this.setCookie('all');
-      this.loadAnalytics();
-    } else {
-      this.setCookie('essential');
-    }
-    
+    this.setCookie('essential');
+
     this.hidePreferences();
   }
 
