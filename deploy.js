@@ -25,7 +25,7 @@ const knownHostsPath = `${__dirname}/deploy-known-hosts`;
 try {
   console.log(`Deploying to ${user}@${host}:${remotePath} (port ${port}) ...`);
   execSync(
-    `rsync -avz --delete \
+    `rsync -avz --delete --exclude=subscribers.txt \
       -e "ssh -i ${keyPath} -o StrictHostKeyChecking=yes -o UserKnownHostsFile=${knownHostsPath} -p ${port}" \
       ${localDist} \
       ${user}@${host}:${remotePath}`,
@@ -34,7 +34,7 @@ try {
   console.log("Deploy finished.");
 } catch (err) {
   console.error("Deploy failed:", err.message);
-  process.exit(1);
+  process.exitCode = 1;
 } finally {
   fs.unlinkSync(keyPath);
 }
