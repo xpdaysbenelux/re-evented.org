@@ -26,6 +26,15 @@ function smoothScrollTo(targetId) {
     top: targetPosition,
     behavior: 'smooth'
   });
+
+  history.pushState(null, '', `#${targetId}`);
+
+  setTimeout(() => {
+    if (!targetElement.hasAttribute('tabindex')) {
+      targetElement.setAttribute('tabindex', '-1');
+    }
+    targetElement.focus({ preventScroll: true });
+  }, 600);
 }
 
 /* ===================== UTILITY FUNCTIONS ===================== */
@@ -228,12 +237,7 @@ function addProtectionStyles() {
       user-select: none;
       -webkit-user-select: none;
     }
-    
-    @media print {
-      .no-copy {
-        display: none; /* Optional: hide from print if strict */
-      }
-    }
+
   `;
   document.head.appendChild(style);
 }
@@ -516,29 +520,12 @@ setTimeout(ensureYearUpdated, 100);
 
 // Main initialization when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-  initializeBackToTopButton();
   initializeAnchorLinks();
   initializeCookieConsent();
   initializeDataProtection();
 });
 
 /* ===================== INITIALIZATION FUNCTIONS ===================== */
-
-/**
- * Initialize back to top button functionality
- */
-function initializeBackToTopButton() {
-  const backToTopButton = document.getElementById('backToTopButton');
-  if (!backToTopButton) return;
-  
-  window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) {
-      backToTopButton.classList.add('visible');
-    } else {
-      backToTopButton.classList.remove('visible');
-    }
-  });
-}
 
 /**
  * Initialize smooth scrolling for anchor links
@@ -746,37 +733,6 @@ function initializeEnhancedScrolling() {
   }, 100);
   
   window.addEventListener('scroll', handleScroll, scrollOptions);
-  
-  // Enhanced smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href').substring(1);
-      const targetElement = document.getElementById(targetId);
-      
-      if (targetElement) {
-        const headerHeight = 80;
-        const elementPosition = targetElement.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-        
-        window.scrollTo({
-          top: Math.max(0, offsetPosition),
-          behavior: 'smooth'
-        });
-        
-        // Update URL without page jump
-        history.pushState(null, null, `#${targetId}`);
-        
-        // Focus the target element for accessibility
-        setTimeout(() => {
-          if (!targetElement.hasAttribute('tabindex')) {
-            targetElement.setAttribute('tabindex', '-1');
-          }
-          targetElement.focus({ preventScroll: true });
-        }, 1000);
-      }
-    });
-  });
 }
 
 /* ===================== ACCESSIBILITY ENHANCEMENTS ===================== */
