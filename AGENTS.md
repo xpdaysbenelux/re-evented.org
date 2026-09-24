@@ -15,12 +15,13 @@ Static marketing site for Re-Evented (agile/lean events, Benelux). Plain HTML/CS
 ## Commands
 
 - `npm run verify` — lint (eslint, stylelint, htmlhint) + html-validate + build. Must pass before every commit.
-- `npm run build` — copies `public_html/` to `dist/`.
+- `npm run build` — copies `public_html/` to `dist/`, compiles Tailwind, content-hashes asset URLs.
+- Tests: `npm run test:php` (Docker), `npm run test:tailwind`, `npm run test:hash`.
 - Local preview: `npm run build && python3 -m http.server 8765 -d dist` (tailwind.css only exists in dist).
 
 ## Rules
 
 - `public_html/subscribers.txt` holds real personal data: never commit it, never print or read its contents, never put it in a prompt.
-- After changing `styles.css` or `script.js`, bump the `?v=` query on its `<link>`/`<script>` tag in every HTML page (assets are cached for a month).
+- Asset URLs get a content hash at build time (`scripts/hash-assets.mjs`); don't hand-edit `?v=` values.
 - No comments in code unless asked. Match the surrounding style.
 - Do not commit or push; the orchestrator does that.
