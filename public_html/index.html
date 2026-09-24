@@ -207,7 +207,7 @@
                             class="h-20 w-auto sm:h-28 sm:w-auto lg:h-32 lg:w-auto object-contain logo-image"
                             src="img/re-evented-logo.webp" width="180" height="80" />
                     </a>
-                    <nav class="hidden md:flex items-center gap-4 lg:gap-6" aria-label="Main Navigation" role="navigation">
+                    <nav class="hidden md:flex items-center gap-4 lg:gap-6" aria-label="Main Navigation">
                         <a class="text-primary text-sm lg:text-base font-medium leading-normal hover:text-[var(--primary-green-accessible)] transition-colors duration-300 transform hover:scale-105"
                             href="#events" aria-label="Go to Events section">Events</a>
                         <a class="text-primary text-sm lg:text-base font-medium leading-normal hover:text-[var(--primary-green-accessible)] transition-colors duration-300 transform hover:scale-105"
@@ -222,7 +222,7 @@
                             href="#partner" aria-label="Go to Contact section">Contact</a>
                     </nav>
                     <div class="md:hidden">
-                        <button class="text-primary focus:outline-none" id="mobile-menu-button" aria-label="Open mobile menu">
+                        <button type="button" class="text-primary focus:outline-none" id="mobile-menu-button" aria-label="Open mobile menu">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round"
@@ -232,7 +232,7 @@
                     </div>
                 </div>
                 <div class="hidden md:hidden mt-4" id="mobile-menu">
-                    <nav class="flex flex-col gap-4" aria-label="Mobile Navigation" role="navigation">
+                    <nav class="flex flex-col gap-4" aria-label="Mobile Navigation">
                         <a class="text-primary text-base font-medium leading-normal hover:text-[var(--primary-green-accessible)] transition-colors duration-300"
                             href="#events" aria-label="Go to Events section">Events</a>
                         <a class="text-primary text-base font-medium leading-normal hover:text-[var(--primary-green-accessible)] transition-colors duration-300"
@@ -251,7 +251,7 @@
             </header>
             <main class="flex flex-1 flex-col" id="main-content" tabindex="-1">
                 <!-- ===================== HERO SECTION ===================== -->
-                <section class="relative bg-white-contrast section-padding overflow-hidden animate-fade-in" role="region" aria-labelledby="hero-title">
+                <section class="relative bg-white-contrast section-padding overflow-hidden animate-fade-in" aria-labelledby="hero-title">
                     <div class="absolute inset-0 geometric-pattern pointer-events-none"></div>
                     <div class="angular-hero-shape-1"></div>
                     <div class="angular-hero-shape-2"></div>
@@ -292,7 +292,7 @@
                     <div
                         class="layout-content-container flex flex-col max-w-6xl flex-1 px-4 mx-auto relative z-10 section-padding">
                         <!-- ===================== EVENTS 2026 SECTION ===================== -->
-                        <section class="@container section-padding animate-fade-in" id="events" role="region" aria-labelledby="events-2026-title">
+                        <section class="@container section-padding animate-fade-in" id="events" aria-labelledby="events-2026-title">
                             <div
                                 class="flex flex-col gap-6 items-center text-center mb-12 sm:mb-16 animate-slide-in-up">
                                 <h2 class="text-h2 text-primary" id="events-2026-title">
@@ -351,7 +351,7 @@
                         </section>
                         <div class="section-divider"></div>
                         <!-- ===================== EARLIER EVENTS SECTION ===================== -->
-                        <section class="@container section-padding animate-fade-in" id="earlier-events" role="region" aria-labelledby="earlier-events-title">
+                        <section class="@container section-padding animate-fade-in" id="earlier-events" aria-labelledby="earlier-events-title">
                             <div
                                 class="flex flex-col gap-6 items-center text-center mb-12 sm:mb-16 animate-slide-in-up">
                                 <h2 class="text-h2 text-primary" id="earlier-events-title">
@@ -400,7 +400,7 @@
                         </section>
                         <div class="section-divider"></div>
                         <!-- ===================== COMMUNITY SECTION ===================== -->
-                        <section class="@container section-padding animate-fade-in" id="community" role="region" aria-labelledby="community-title">
+                        <section class="@container section-padding animate-fade-in" id="community" aria-labelledby="community-title">
                             <div
                                 class="flex flex-col gap-6 items-center text-center mb-12 sm:mb-16 animate-slide-in-up">
                                 <h2 class="text-h2 text-primary max-w-3xl" id="community-title">
@@ -484,7 +484,7 @@
                             </div>
                         </section>
                         <!-- ===================== EVENT PORTFOLIO / RESOURCES SECTION ===================== -->
-                        <section class="bg-light-gray section-padding text-secondary relative overflow-hidden animate-fade-in" id="event-portfolio" role="region" aria-labelledby="event-portfolio-title">
+                        <section class="bg-light-gray section-padding text-secondary relative overflow-hidden animate-fade-in" id="event-portfolio" aria-labelledby="event-portfolio-title">
                             <div class="absolute inset-0 light-gray-geometric-pattern pointer-events-none"></div>
                             <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                                 <div class="flex flex-col gap-6 items-center text-center mb-12 animate-slide-in-up">
@@ -540,7 +540,7 @@
                         </section>
                         <div class="section-divider"></div>
                         <!-- ===================== HOW WE WORK SECTION ===================== -->
-                        <section class="@container section-padding animate-fade-in" role="region" aria-labelledby="how-title">
+                        <section class="@container section-padding animate-fade-in" aria-labelledby="how-title">
                             <div class="flex flex-col gap-8 sm:gap-10 items-center text-center mb-12 sm:mb-16 animate-slide-in-up">
                                 <div class="flex flex-col gap-5">
                                     <h2 class="text-h2 text-primary max-w-3xl" id="how-title">
@@ -657,7 +657,7 @@
                         </section>
                         <div class="section-divider"></div>
                         <!-- ===================== ABOUT RE-EVENTED SECTION ===================== -->
-                        <section class="section-padding bg-white-contrast @container animate-fade-in" id="about" role="region" aria-labelledby="about-title">
+                        <section class="section-padding bg-white-contrast @container animate-fade-in" id="about" aria-labelledby="about-title">
                             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                                 <h2 class="text-h2 text-primary mb-12" id="about-title">
                                     ABOUT RE-EVENTED
@@ -913,6 +913,7 @@
                                 <p class="text-xs font-semibold text-secondary uppercase tracking-widest opacity-50 mb-6">Legal Entities</p>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
                                     <div class="bg-white-contrast p-4 sm:p-6 rounded-lg card-standard text-left">
+<!-- [html-validate-disable-next empty-heading] -->
                                         <h3 class="text-sm font-semibold text-primary mb-3 opacity-80"><span data-protect="vzw_name"></span></h3>
                                         <p class="text-xs text-secondary mb-1 opacity-70">Email: <span data-protect="email_info"></span></p>
                                         <p class="text-xs text-secondary mb-1 opacity-70">Address: <span data-protect="vzw_address"></span></p>
@@ -923,6 +924,7 @@
                                         <p class="text-xs text-secondary opacity-70">BIC: <span data-protect="vzw_bic"></span></p>
                                     </div>
                                     <div class="bg-white-contrast p-4 sm:p-6 rounded-lg card-standard text-left">
+<!-- [html-validate-disable-next empty-heading] -->
                                         <h3 class="text-sm font-semibold text-primary mb-3 opacity-80"><span data-protect="stichting_name"></span></h3>
                                         <p class="text-xs text-secondary mb-1 opacity-70">Email: <span data-protect="email_info"></span></p>
                                         <p class="text-xs text-secondary mb-1 opacity-70">Address: <span data-protect="stichting_address"></span></p>
@@ -977,7 +979,7 @@
             </footer>
         </div>
     </div>
-    <a class="back-to-top hover:text-[var(--primary-green-accessible)] transition-colors duration-300" href="#top" id="backToTopButton" title="Back to Top">
+    <a class="back-to-top hover:text-[var(--primary-green-accessible)] transition-colors duration-300" href="#top" id="backToTopButton" aria-label="Back to top" title="Back to Top">
         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
             <path clip-rule="evenodd"
                 d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
