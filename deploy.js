@@ -1,4 +1,4 @@
-import { execSync } from "child_process";
+import { execFileSync } from "child_process";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import fs from "fs";
@@ -24,11 +24,18 @@ const knownHostsPath = `${__dirname}/deploy-known-hosts`;
 
 try {
   console.log(`Deploying to ${user}@${host}:${remotePath} (port ${port}) ...`);
-  execSync(
-    `rsync -avz --delete --exclude=subscribers.txt \
-      -e "ssh -i ${keyPath} -o StrictHostKeyChecking=yes -o UserKnownHostsFile=${knownHostsPath} -p ${port}" \
-      ${localDist} \
-      ${user}@${host}:${remotePath}`,
+  execFileSync(
+    "rsync",
+    [
+      "-rlvz",
+      "--checksum",
+      "--delete",
+      "--exclude=subscribers.txt",
+      "-e",
+      `ssh -i '${keyPath}' -o StrictHostKeyChecking=yes -o UserKnownHostsFile='${knownHostsPath}' -p ${port}`,
+      localDist,
+      `${user}@${host}:${remotePath}`,
+    ],
     { stdio: "inherit" }
   );
   console.log("Deploy finished.");

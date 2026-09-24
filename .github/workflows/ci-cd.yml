@@ -30,7 +30,7 @@ jobs:
           fetch-depth: 0
 
       - name: Scan for secrets
-        uses: gitleaks/gitleaks-action@v2
+        uses: gitleaks/gitleaks-action@ff98106e4c7b2bc287b24eaf42907196329070c7 # v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -49,6 +49,9 @@ jobs:
       - name: Run tests
         run: npm run test:run
 
+      - name: Test newsletter endpoint
+        run: bash tests/subscribe.test.sh
+
       - name: Build project
         run: npm run build
 
@@ -58,11 +61,53 @@ jobs:
           name: dist
           path: dist/
           include-hidden-files: true
-          retention-days: 1
+          retention-days: 7
+
+  validate:
+    name: W3C & Accessibility
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: HTML5 Validation
+        uses: Cyb3r-Jak3/html5validator-action@41633d488eb36e18fd1a95ffc83daf1bf22a75bd # v7.2.0
+        with:
+          root: dist/
+
+      - name: Link Checker (advisory)
+        uses: lycheeverse/lychee-action@22134d37a1fff6c2974df9c92a7c7e1e86a08f9c # v1.9.0
+        with:
+          args: --verbose --no-progress "dist/**/*.html"
+        continue-on-error: true
+
+      - name: Accessibility (Pa11y)
+        run: |
+          npx serve dist -p 3000 &
+          for i in $(seq 1 30); do curl -sf http://localhost:3000/ >/dev/null && break; sleep 1; done
+          npx pa11y-ci --sitemap http://localhost:3000/sitemap.xml --sitemap-find https://re-evented.org --sitemap-replace http://localhost:3000
 
   deploy:
     name: Deploy to SiteGround
-    needs: build-and-test
+    needs: [build-and-test, validate]
     if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -91,3 +136,10 @@ jobs:
           SITEGROUND_REMOTE_PATH: www/re-evented.org/public_html
           SITEGROUND_PORT: 18765
         run: node deploy.js
+
+      - name: Smoke test production
+        run: |
+          sleep 5
+          test "$(curl -s -o /dev/null -w '%{http_code}' "https://re-evented.org/?smoke=${GITHUB_SHA}")" = 200
+          test "$(curl -s -o /dev/null -w '%{http_code}' "https://re-evented.org/subscribers.txt?smoke=${GITHUB_SHA}")" != 200
+          test "$(curl -s -o /dev/null -w '%{http_code}' "https://re-evented.org/.htaccess?smoke=${GITHUB_SHA}")" = 403
