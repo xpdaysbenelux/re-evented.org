@@ -139,7 +139,11 @@ jobs:
 
       - name: Smoke test production
         run: |
-          sleep 5
-          test "$(curl -s -o /dev/null -w '%{http_code}' "https://re-evented.org/?smoke=${GITHUB_SHA}")" = 200
-          test "$(curl -s -o /dev/null -w '%{http_code}' "https://re-evented.org/subscribers.txt?smoke=${GITHUB_SHA}")" != 200
-          test "$(curl -s -o /dev/null -w '%{http_code}' "https://re-evented.org/.htaccess?smoke=${GITHUB_SHA}")" = 403
+          check() { curl -s -o /dev/null -w '%{http_code}' "https://re-evented.org$1?smoke=${GITHUB_SHA}-$2"; }
+          for i in $(seq 1 12); do
+            home=$(check / $i); subs=$(check /subscribers.txt $i); hta=$(check /.htaccess $i); tw=$(check /tailwind.css $i)
+            echo "try $i: home=$home subscribers=$subs htaccess=$hta tailwind=$tw"
+            [ "$home" = 200 ] && [ "$subs" != 200 ] && [ "$hta" = 403 ] && [ "$tw" = 200 ] && exit 0
+            sleep 5
+          done
+          exit 1
