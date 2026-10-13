@@ -1,10 +1,10 @@
 # re-evented.org
 
-Static marketing site for Re-Evented (agile/lean events, Benelux). Plain HTML/CSS/JS, no framework, no bundler.
+Static informational site for Re-Evented (learning and adaptive organisations, Benelux; past events, newsletter, contact). Plain HTML/CSS/JS, no framework, no bundler.
 
 ## Layout
 
-- `public_html/` — the site. `index.html` (homepage), `cookies-policy.html`, `privacy-policy.html`, `terms-and-conditions.html`, `events/`, `img/`, `docs/`.
+- `public_html/` — the site. `index.html` (homepage), `cookies-policy.html`, `privacy-policy.html`, `terms-and-conditions.html`, `events/`, `img/`.
 - `public_html/styles.css` — all custom CSS. Tailwind utilities are compiled at build time into `dist/tailwind.css` (config: `tailwind.config.js`, input: `src/tailwind.css`). Fonts are self-hosted (`fonts.css`, `fonts/`).
 - `public_html/script.js` — all site JS (menu, animations, newsletter form, cookie banner).
 - `public_html/subscribe.php` — newsletter signup endpoint (PHP on SiteGround/Apache).
@@ -16,7 +16,7 @@ Static marketing site for Re-Evented (agile/lean events, Benelux). Plain HTML/CS
 
 - `npm run verify` — lint (eslint, stylelint, htmlhint) + html-validate + build. Must pass before every commit.
 - `npm run build` — copies `public_html/` to `dist/`, compiles Tailwind, content-hashes asset URLs.
-- Tests: `npm run test:php` (Docker), `npm run test:tailwind`, `npm run test:hash`.
+- Tests: `npm run test:php` (Docker), `npm run test:tailwind`, `npm run test:hash`. `npm run test:run` runs html-validate plus `tests/site-content.test.sh` (site content rules from `specs/`).
 - Local preview: `npm run build && python3 -m http.server 8765 -d dist` (tailwind.css only exists in dist).
 
 ## Rules

@@ -1,6 +1,6 @@
 # Re-Evented Website
 
-Website for [Re-Evented](https://re-evented.org), a non-profit dedicated to creating environments for sharing knowledge in agile methods, lean thinking, reinventing organizations, and future ways of working.
+Website for [Re-Evented](https://re-evented.org), a non-profit community for learning and adaptive organisations: agile methods, lean thinking, reinventing organizations, and future ways of working.
 
 ## Tech Stack
 
@@ -68,14 +68,5 @@ public_html/
 ├── cookies-policy.html
 ├── events/
 │   └── ai.html                       # → aisummitbrussels.com
-├── docs/
-│   └── Re-Evented-sponsorbook-2026.pdf
 └── img/
 ```
-
-## Events 2026
-
-| Event | Page |
-|---|---|
-| Liberating Structures Global Gathering | https://liberatingstructuresgathering.com/ |
-| Regional Scrum Gathering Brussels | https://www.rsgbrussels26.com/ |
